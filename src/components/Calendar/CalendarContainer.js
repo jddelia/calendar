@@ -14,6 +14,6 @@ function CalendarContainer() {
       <Calendar month={month} />
     </div>
   );
-};
+}
 
 export default CalendarContainer;

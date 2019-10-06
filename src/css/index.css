@@ -77,11 +77,13 @@ body {
 }
 .calendarContainer .calendarBody .dateBox {
   border: 1px solid #eeeeee;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 15% 85%;
   background: #ffffff;
   transition: all 0.2s;
 }
 .calendarContainer .calendarBody .dateBox:hover {
-  transform: scale(1.1);
   box-shadow: 1px 1px 10px #eeeeee;
 }
 .calendarContainer .calendarBody .dateBox .boxDate {
@@ -89,6 +91,28 @@ body {
   padding: 2%;
   font-size: 10px;
   color: #222222;
+}
+.calendarContainer .calendarBody .dateBox .eventsList {
+  align-self: center;
+  justify-self: center;
+  height: 90%;
+  width: 90%;
+  border: 1px solid #eeeeee;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.calendarContainer .calendarBody .dateBox .eventsList:hover {
+  cursor: pointer;
+}
+.calendarContainer .calendarBody .dateBox .dateBoxModal {
+  z-index: 1;
+  border: 2px solid #aaaaaa;
+  height: 60vh;
+  width: 50vw;
+  background: #ffffff;
+  position: absolute;
+  top: 10vw;
+  left: 25vw;
 }
 
 /*# sourceMappingURL=index.css.map */

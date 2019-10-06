@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DateBox from './DateBox';
 
 import { DATE_BOXES, DAYS_ABBR, MONTHS_ABBR } from '../calendarUtils';
@@ -27,6 +27,8 @@ if (date.getDate() > 6) {
 }
 
 function CalendarBody({ daysInMonth }) {
+  const [isDisplayed, setIsDisplayed] = useState(false);
+
   let calendarDateBoxes = [];
   
   /*if (firstDayOfMonth > 3 && MONTHS_ABBR[date.getMonth()]) {
@@ -40,11 +42,20 @@ function CalendarBody({ daysInMonth }) {
     // of the first day of the month [0-6], or if i > days
     // in month + index of first day in month (corrects for start)
     if (i < firstDayOfMonth || i >= daysInMonth + firstDayOfMonth) {
-      calendarDateBoxes.push(<DateBox key={i} boxDate={null} />);
+      calendarDateBoxes.push(
+        <DateBox key={i} boxDate={null} />
+      );
       continue;
     }
     // Start "dating" boxes when i equal first day of month index
-    calendarDateBoxes.push(<DateBox key={i} boxDate={day} />);
+    calendarDateBoxes.push(
+      <DateBox 
+        key={i} 
+        boxDate={day} 
+        setIsDisplayed={setIsDisplayed}
+        isDisplayed={isDisplayed}
+      />
+    );
     day += 1;
   }
 
@@ -53,6 +64,6 @@ function CalendarBody({ daysInMonth }) {
       {calendarDateBoxes}
     </div>
   );
-};
+}
 
 export default CalendarBody;

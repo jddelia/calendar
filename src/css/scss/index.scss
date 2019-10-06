@@ -89,11 +89,13 @@ body {
 
     .dateBox {
       border: 1px solid #eeeeee;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 15% 85%;
       background: #ffffff;
       transition: all .2s;
 
       &:hover {
-        transform: scale(1.1);
         box-shadow: 1px 1px 10px #eeeeee;
       }
 
@@ -102,6 +104,31 @@ body {
         padding: 2%;
         font-size: 10px;
         color: #222222;
+      }
+
+      .eventsList {
+        align-self: center;
+        justify-self: center;
+        height: 90%;
+        width: 90%;
+        border: 1px solid #eeeeee;
+        display: grid;
+        grid-template-columns: 1fr;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .dateBoxModal {
+        z-index: 1;
+        border: 2px solid #aaaaaa;
+        height: 60vh;
+        width: 50vw;
+        background: #ffffff;
+        position: absolute;
+        top: 10vw;
+        left: 25vw;
       }
     }
   }

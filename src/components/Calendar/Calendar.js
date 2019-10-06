@@ -28,6 +28,6 @@ function Calendar({ month }) {
       <CalendarBody daysInMonth={daysInMonth} />
     </div>
   );
-};
+}
 
 export default Calendar;
