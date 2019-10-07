@@ -26,7 +26,7 @@ function DateBoxModal({ events, date, setEvents, setModalDisplayed, setIsDisplay
   return (
     <div className="dateBoxModal">
       <div className="modalControls">
-        <span className="modalTitle">{date}</span>
+        <span className="modalTitle">Day: {date}</span>
         <span className="modalCloseBtn" onClick={handleCloseModal}>X</span>
       </div>
 
@@ -35,12 +35,12 @@ function DateBoxModal({ events, date, setEvents, setModalDisplayed, setIsDisplay
           <div className="timeInput">
             <label className="modalFormLabel">Time:</label>
             <select ref={timeRef} className="timeSelect">
-              <option className="time"></option>
+              <option className="time">12:00 AM</option>
             </select>
           </div>
 
           <div className="eventInput">
-            <label className="modalFormLabel">Time:</label>
+            <label className="modalFormLabel">Event:</label>
             <textarea ref={eventRef} className="event" rows="4" cols="4"></textarea>
           </div>
 

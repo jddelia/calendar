@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DateBox from './DateBox';
 
-import { DATE_BOXES, DAYS_ABBR, MONTHS_ABBR } from '../calendarUtils';
+import { DATE_BOXES, DAYS_ABBR } from '../calendarUtils';
 
 const date = new Date();
 const currentDay = date.getDay();

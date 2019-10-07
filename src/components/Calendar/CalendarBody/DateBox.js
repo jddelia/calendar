@@ -21,7 +21,13 @@ function DateBox({ boxDate, setIsDisplayed, isDisplayed }) {
         {event.title.subStr(0, 20)}
       </span>
     );
-  }); 
+  });
+
+  if (boxDate === null) {
+    return (
+      <div className="blankBox"></div>
+    );
+  }
 
   return (
     <div className="dateBox">
