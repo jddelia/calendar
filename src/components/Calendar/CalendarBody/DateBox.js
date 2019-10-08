@@ -13,13 +13,22 @@ function DateBox({ boxDate, setIsDisplayed, isDisplayed }) {
     setIsDisplayed(true);
   }
 
-  console.log(modalDisplayed)
+  /*function handleDeleteEvent(index) {
+    const filteredEventsList = events.filter((_, idx) => {
+      return idx !== index;
+    });
 
-  const eventsList = events.map(event => {
+    setEvents(filteredEventsList);
+  }*/
+
+  console.log(events)
+
+  const eventsList = events.map((event, index) => {
     return (
-      <span className="eventDescShort">
-        {event.title.subStr(0, 20)}
-      </span>
+      <div key={index} className="eventDescShort">
+        <span className="eventTime">{event.time} </span>
+        <span className="eventTitle">{event.title}</span>
+      </div>
     );
   });
 

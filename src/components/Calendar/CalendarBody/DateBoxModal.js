@@ -10,18 +10,35 @@ function DateBoxModal({ events, date, setEvents, setModalDisplayed, setIsDisplay
     setIsDisplayed(false);
   }
 
-  function handleAddEvent() {
+  function handleAddEvent(e) {
+    e.preventDefault();
+
     const eventTime = timeRef.current.value;
     const eventDesc = eventRef.current.value;
 
-    setEvents(prevState => [
-      ...prevState,
+    console.log(eventTime, eventDesc)
+
+    setEvents([
+      ...events,
       {
         time: eventTime,
         title: eventDesc
       }
     ]);
+
+    eventRef.current.value = "";
   }
+
+  const eventsList = events.map((event, index) => {
+    return (
+      <div key={index} className="eventDesc">
+        <span className="eventTimeMain">{event.time} </span>
+        <span className="eventTitleMain">{event.title}</span>
+      </div>
+    );
+  });
+
+  //const timeSlots = Array(24).fill(0)
 
   return (
     <div className="dateBoxModal">
@@ -31,11 +48,34 @@ function DateBoxModal({ events, date, setEvents, setModalDisplayed, setIsDisplay
       </div>
 
       <div className="addEvent">
-        <form className="modalForm">
+        <form className="modalForm" onSubmit={handleAddEvent}>
           <div className="timeInput">
             <label className="modalFormLabel">Time:</label>
             <select ref={timeRef} className="timeSelect">
               <option className="time">12:00 AM</option>
+              <option className="time">1:00 AM</option>
+              <option className="time">2:00 AM</option>
+              <option className="time">3:00 AM</option>
+              <option className="time">4:00 AM</option>
+              <option className="time">5:00 AM</option>
+              <option className="time">6:00 AM</option>
+              <option className="time">7:00 AM</option>
+              <option className="time">8:00 AM</option>
+              <option className="time">9:00 AM</option>
+              <option className="time">10:00 AM</option>
+              <option className="time">11:00 AM</option>
+              <option className="time">12:00 PM</option>
+              <option className="time">1:00 PM</option>
+              <option className="time">2:00 PM</option>
+              <option className="time">3:00 PM</option>
+              <option className="time">4:00 PM</option>
+              <option className="time">5:00 PM</option>
+              <option className="time">6:00 PM</option>
+              <option className="time">7:00 PM</option>
+              <option className="time">8:00 PM</option>
+              <option className="time">9:00 PM</option>
+              <option className="time">10:00 PM</option>
+              <option className="time">11:00 PM</option>
             </select>
           </div>
 
@@ -49,7 +89,7 @@ function DateBoxModal({ events, date, setEvents, setModalDisplayed, setIsDisplay
       </div>
 
       <div className="events">
-        {events}
+        {eventsList}
       </div>
     </div>
   );
