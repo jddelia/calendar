@@ -8,11 +8,11 @@
 # testing
 /coverage
 
+#scss
+/src/css/scss
+
 # production
 /build
-
-# scss
-./src/css/scss
 
 # misc
 .DS_Store
