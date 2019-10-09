@@ -19,7 +19,7 @@ body {
   .navRight {
     justify-self: end;
     margin-right: 2%;
-    width: 35%;
+    width: 20%;
 
     .navLinks {
       display: flex;
@@ -131,10 +131,6 @@ body {
           &:hover {
             background: #eeeeee;
           }
-        }
-
-        .eventTime {
-          
         }
       }
 
@@ -248,8 +244,10 @@ body {
         grid-auto-rows: minmax(20px, 30px);
 
         .eventDesc {
+          align-self: center;
+          display: grid;
+          grid-template-columns: 1fr 4fr 1fr;
           padding: 2%;
-          font-size: 14px;
 
           &:hover {
             background: #eeeeee;
@@ -257,6 +255,7 @@ body {
         }
 
         .eventTimeMain {
+          width: fit-content;
           padding: 1%;
           margin-right: 1%;
           border: 1px solid #aaaaaa;
@@ -264,7 +263,21 @@ body {
         }
 
         .eventTitleMain {
+          font-size: 14px;
           letter-spacing: 2px;
+        }
+
+        .removeEvent {
+          justify-self: center;
+          padding: 4%;
+          border: 1px solid #aaaaaa;
+          border-radius: 2px;
+          font-size: 12px;
+          color: #f12c2c;
+
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
     }

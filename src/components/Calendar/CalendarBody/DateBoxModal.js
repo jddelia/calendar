@@ -29,11 +29,20 @@ function DateBoxModal({ events, date, setEvents, setModalDisplayed, setIsDisplay
     eventRef.current.value = "";
   }
 
+  function handleDeleteEvent(index) {
+    const filteredEventsList = events.filter((_, idx) => {
+      return idx !== index;
+    });
+
+    setEvents(filteredEventsList);
+  }
+
   const eventsList = events.map((event, index) => {
     return (
       <div key={index} className="eventDesc">
         <span className="eventTimeMain">{event.time} </span>
         <span className="eventTitleMain">{event.title}</span>
+        <span className="removeEvent" onClick={() => handleDeleteEvent(index)}>x</span>
       </div>
     );
   });

@@ -9,9 +9,8 @@ function Navbar() {
 
       <div className="navRight">
         <div className="navLinks">
-          <a href="#" className="navLink">Github</a>
+          <a href="https://github.com/jddelia" className="navLink">Github</a>
           <a href="#" className="navLink">Home</a>
-          <a href="#" className="navLink">About</a>
         </div>
       </div>
     </nav>

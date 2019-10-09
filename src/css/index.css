@@ -16,7 +16,7 @@ body {
 .navBar .navRight {
   justify-self: end;
   margin-right: 2%;
-  width: 35%;
+  width: 20%;
 }
 .navBar .navRight .navLinks {
   display: flex;
@@ -214,20 +214,35 @@ body {
   grid-auto-rows: minmax(20px, 30px);
 }
 .calendarContainer .calendarBody .dateBox .events .eventDesc {
+  align-self: center;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
   padding: 2%;
-  font-size: 14px;
 }
 .calendarContainer .calendarBody .dateBox .events .eventDesc:hover {
   background: #eeeeee;
 }
 .calendarContainer .calendarBody .dateBox .events .eventTimeMain {
+  width: fit-content;
   padding: 1%;
   margin-right: 1%;
   border: 1px solid #aaaaaa;
   font-size: 12px;
 }
 .calendarContainer .calendarBody .dateBox .events .eventTitleMain {
+  font-size: 14px;
   letter-spacing: 2px;
+}
+.calendarContainer .calendarBody .dateBox .events .removeEvent {
+  justify-self: center;
+  padding: 4%;
+  border: 1px solid #aaaaaa;
+  border-radius: 2px;
+  font-size: 12px;
+  color: #f12c2c;
+}
+.calendarContainer .calendarBody .dateBox .events .removeEvent:hover {
+  cursor: pointer;
 }
 .calendarContainer .calendarBody .blankBox {
   border: 1px solid #dddddd;
