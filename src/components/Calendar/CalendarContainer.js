@@ -4,14 +4,10 @@ import Calendar from './Calendar';
 
 import { MONTHS } from './calendarUtils';
 
-let date = new Date();
-
 function CalendarContainer() {
-  const [month, setMonth] = useState(MONTHS[date.getMonth()]);
-
   return (
     <div className="calendarContainer">
-      <Calendar month={month} />
+      <Calendar />
     </div>
   );
 }

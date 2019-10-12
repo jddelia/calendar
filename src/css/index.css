@@ -49,8 +49,16 @@ body {
 }
 .calendarContainer .calendarControls {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
   border-bottom: 2px solid #eeeeee;
+}
+.calendarContainer .calendarControls .chevron {
+  height: 30px;
+}
+.calendarContainer .calendarControls .chevron:hover {
+  cursor: pointer;
 }
 .calendarContainer .month {
   justify-self: center;

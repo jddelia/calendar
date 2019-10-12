@@ -57,8 +57,18 @@ body {
 
   .calendarControls {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
     border-bottom: 2px solid #eeeeee;
+
+    .chevron {
+      height: 30px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 
   .month {

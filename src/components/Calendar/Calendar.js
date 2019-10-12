@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import CalendarControls from './CalendarControls/CalendarControls';
 import Month from './Month';
 import Days from './Days';
 import CalendarBody from './CalendarBody/CalendarBody';
 
-import { DAYS_IN_MONTHS } from './calendarUtils';
+import FirstDayContext from '../../Contexts/FirstDayContext';
 
-function Calendar({ month }) {
+import { DAYS_IN_MONTHS, MONTHS } from './calendarUtils';
+
+const date = new Date();
+
+function Calendar({  }) {
+  const [firstDay, setFirstDay] = useState(null);
+  const [monthIndex, setMonthIndex] = useState(date.getMonth())
+
+  const month = MONTHS[monthIndex];
+
   let daysInMonth;
 
   if (DAYS_IN_MONTHS[31].includes(month)) {
@@ -21,12 +30,14 @@ function Calendar({ month }) {
   console.log(DAYS_IN_MONTHS[31].includes(month))
 
   return (
-    <div className="calendar">
-      <CalendarControls />
-      <Month monthName={month} />
-      <Days />
-      <CalendarBody daysInMonth={daysInMonth} />
-    </div>
+    <FirstDayContext.Provider value={firstDay, setFirstDay}>
+      <div className="calendar">
+        <CalendarControls monthIndex={monthIndex} setMonthIndex={setMonthIndex} />
+        <Month monthName={month} />
+        <Days />
+        <CalendarBody daysInMonth={daysInMonth} />
+      </div>
+    </FirstDayContext.Provider>
   );
 }
 
