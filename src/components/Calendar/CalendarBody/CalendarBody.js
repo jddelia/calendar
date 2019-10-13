@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DateBox from './DateBox';
 
-import { DATE_BOXES, DAYS_ABBR } from '../calendarUtils';
+import { DATE_BOXES, DAYS_ABBR, DAYS_IN_MONTHS } from '../calendarUtils';
 
 const date = new Date();
 const currentDay = date.getDay();
@@ -12,32 +12,45 @@ if (date.getDate() > 6) {
   // Subtract index of current day by
   // remainder of (date/days in week) + 1 (Adds current day in count)
   // to get index of first day in month
-  firstDayOfMonth = Math.abs((currentDay) - (date.getDate() % DAYS_ABBR.length) + 1);
+  firstDayOfMonth = (currentDay) - (date.getDate() % DAYS_ABBR.length) + 1;
 } else {
   firstDayOfMonth = (currentDay) - (date.getDate()) + 1;
-  console.log(firstDayOfMonth)
-
-  // If first day is negative index
-  if (firstDayOfMonth < 0) {
-    console.log(firstDayOfMonth)
-    // Subtract firstDayOfMonth index,
-    // by number of days in week
-    firstDayOfMonth = DAYS_ABBR.length + firstDayOfMonth;
-  }
 }
 
-function CalendarBody({ daysInMonth }) {
+// If first day is negative index
+if (firstDayOfMonth < 0) {
+  // Subtract firstDayOfMonth index,
+  // by number of days in week
+  firstDayOfMonth = DAYS_ABBR.length + firstDayOfMonth;
+}
+
+function CalendarBody({ daysInMonth, firstDay, setFirstDay, month }) {
   const [isDisplayed, setIsDisplayed] = useState(false);
 
+  useEffect(() => {
+    setFirstDay(firstDayOfMonth);
+  }, [setFirstDay]);
+
   let calendarDateBoxes = [];
+  // If firstday of month starts on Friday
+  // or Saturday, add extra date boxes
+  let modifier = 0;
   
-  /*if (firstDayOfMonth > 3 && MONTHS_ABBR[date.getMonth()]) {
-    console.log(DAYS_ABBR[firstDayOfMonth])
-  }*/
+  // Starts on Friday (5), with 31 days or
+  // Saturday (6), with 30 days
+  if (firstDay === 5) {
+    if (DAYS_IN_MONTHS[31].includes(month)) {
+      modifier = 7;
+    }
+  } else if (firstDay === 6) {
+    if (DAYS_IN_MONTHS[30].includes(month)) {
+      modifier = 7;
+    }
+  }
 
   // Days up until days in month (e.g 1-31)
   let day = 1;
-  for (let i = 0; i < DATE_BOXES; i++) {
+  for (let i = 0; i < (DATE_BOXES + modifier); i++) {
     // Skip "dating" boxes where i is less than the index
     // of the first day of the month [0-6], or if i > days
     // in month + index of first day in month (corrects for start)

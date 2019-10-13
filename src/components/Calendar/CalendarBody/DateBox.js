@@ -21,8 +21,6 @@ function DateBox({ boxDate, setIsDisplayed, isDisplayed }) {
     setEvents(filteredEventsList);
   }*/
 
-  console.log(events)
-
   const eventsList = events.map((event, index) => {
     return (
       <div key={index} className="eventDescShort">

@@ -12,10 +12,30 @@ import { DAYS_IN_MONTHS, MONTHS } from './calendarUtils';
 const date = new Date();
 
 function Calendar({  }) {
-  const [firstDay, setFirstDay] = useState(null);
-  const [monthIndex, setMonthIndex] = useState(date.getMonth())
-
+  const [firstDay, setFirstDay] = useState(2);
+  const [monthIndex, setMonthIndex] = useState(date.getMonth());
   const month = MONTHS[monthIndex];
+
+  /*useEffect(() => {
+    if (DAYS_IN_MONTHS[31].includes(month)) {
+      firstDayOfMonth = (firstDay) - (31 % DAYS_ABBR.length) + 1;
+      console.log(firstDayOfMonth)
+    } else if (month === "February") {
+      firstDayOfMonth = (firstDay) - (28 % DAYS_ABBR.length) + 1;
+    } else {
+      firstDayOfMonth = (firstDay) - (30 % DAYS_ABBR.length) + 1;
+      console.log(firstDayOfMonth)
+    }
+    
+    // If first day is negative index
+    if (firstDayOfMonth < 0) {
+      // Subtract firstDayOfMonth index,
+      // by number of days in week
+      firstDayOfMonth = DAYS_ABBR.length + firstDayOfMonth;
+    }
+
+    setFirstDay(firstDayOfMonth);
+  }, [monthIndex])*/
 
   let daysInMonth;
 
@@ -27,15 +47,18 @@ function Calendar({  }) {
     daysInMonth = 30;
   }
 
-  console.log(DAYS_IN_MONTHS[31].includes(month))
-
   return (
     <FirstDayContext.Provider value={firstDay, setFirstDay}>
       <div className="calendar">
         <CalendarControls monthIndex={monthIndex} setMonthIndex={setMonthIndex} />
         <Month monthName={month} />
         <Days />
-        <CalendarBody daysInMonth={daysInMonth} />
+        <CalendarBody
+          month={month}
+          daysInMonth={daysInMonth} 
+          firstDay={firstDay} 
+          setFirstDay={setFirstDay} 
+        />
       </div>
     </FirstDayContext.Provider>
   );
